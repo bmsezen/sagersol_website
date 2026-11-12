@@ -9,14 +9,18 @@ All content lives in plain files; no CMS.
 
 | What | Where |
 | --- | --- |
-| Navigation, social links, Formspree ID | `src/data/site.ts` |
-| Portfolio entries (home, Angel Investments, Local Maine Initiatives) | `src/data/portfolio.ts` |
-| Page text (About, Web3/Crypto, Consultancy, Contact) | `src/pages/*.astro` |
+| Site name, description, header links, social links, Formspree ID | `src/data/site.ts` |
+| Portfolio companies and filter tags | `src/data/portfolio.ts` |
+| Home page text (intro, What I do, Background, Contact) | `src/pages/index.astro` |
 | Logos and images | `public/images/` |
 | Styles | `src/styles/global.css` |
 
-To add a portfolio company: drop its logo in `public/images/logos/`, then add an entry to the
-matching array in `src/data/portfolio.ts`.
+The site is a single page. To add a portfolio company: drop its logo in `public/images/logos/`,
+then add an entry to `companies` in `src/data/portfolio.ts`. Its `tags` decide which filter chips
+show it; add new tags to the `tags` list in the same file.
+
+The old multi-page URLs (`/investments`, `/about`, and so on) redirect to sections of the home
+page; the list is in `astro.config.mjs`.
 
 ## Local development
 

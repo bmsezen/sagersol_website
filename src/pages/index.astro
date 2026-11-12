@@ -1,23 +1,127 @@
 ---
 import Base from '../layouts/Base.astro';
-import FeatureRow from '../components/FeatureRow.astro';
 import { site } from '../data/site';
-import { featured } from '../data/portfolio';
+import { companies, tags, tagSlug as slug } from '../data/portfolio';
+
+const action = `https://formspree.io/f/${site.formspreeId}`;
 ---
 
 <Base>
-  <div class="band">
-    <h2><strong>{site.description}</strong></h2>
-  </div>
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Burak Sezen · Portland, Maine</p>
+      <h1>I back founders building plain, creative solutions for essential industries.</h1>
+      <p class="lede">
+        I'm a two-time founder and technologist turned investor. Through Sager Solutions I
+        invest in early-stage startups, co-run a venture fund, and advise companies on
+        technology, with a soft spot for Maine and for healthcare.
+      </p>
+      <ul class="stats">
+        <li><strong>{companies.length}</strong> angel investments</li>
+        <li><strong>{companies.filter((c) => c.tags.includes('Maine')).length}</strong> Maine companies</li>
+        <li><strong>2</strong> exits as co-founder &amp; CTO</li>
+      </ul>
+    </div>
+  </section>
 
-  <div class="w-page features">
-    <p>
-      I have active investments in startups working in technology, based on, and developed
-      through, wise, creative, and plain solutions. I am currently investing across multiple
-      markets and am interested in companies using lean startup methods and bootstrapping to
-      create value.
+  <section id="work" class="wrap section">
+    <h2>What I do</h2>
+    <div class="pillars">
+      <article>
+        <h3>Venture fund</h3>
+        <p>
+          Co-founder and co-investor at <a href="https://www.go6ixthevent.com/" target="_blank" rel="noopener">6ixthEvent Capital</a>,
+          investing in early-stage startups.
+        </p>
+      </article>
+      <article>
+        <h3>Angel investing</h3>
+        <p>
+          Personal investments in healthcare, education, crypto and deep tech, with a focus on
+          Maine founders and Turkish founders.
+        </p>
+        <a href="#portfolio">See the portfolio →</a>
+      </article>
+      <article>
+        <h3>Consultancy</h3>
+        <p>Technology strategy and advisory. Technology in general, healthcare in specific.</p>
+        <a href="#contact">Get in touch →</a>
+      </article>
+    </div>
+  </section>
+
+  <section id="portfolio" class="band">
+    <div class="wrap section">
+      <h2>Portfolio</h2>
+      <div class="filters" role="group" aria-label="Filter portfolio">
+        <button type="button" class="chip active" data-filter="all">All <span>{companies.length}</span></button>
+        {tags.map((t) => (
+          <button type="button" class="chip" data-filter={slug(t)}>
+            {t} <span>{companies.filter((c) => c.tags.includes(t)).length}</span>
+          </button>
+        ))}
+      </div>
+      <div class="grid">
+        {companies.map((c) => (
+          <a class="card" href={c.url} target="_blank" rel="noopener" data-tags={c.tags.map(slug).join(' ')}>
+            <div class="card-logo"><img src={c.logo} alt="" loading="lazy" /></div>
+            <h3>{c.name}</h3>
+            <p>{c.blurb}</p>
+            <div class="card-tags">
+              {c.role && <span class="tag role">{c.role}</span>}
+              {c.tags.map((t) => <span class="tag">{t}</span>)}
+              {c.note && <span class="tag">{c.note}</span>}
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="background" class="wrap section">
+    <h2>Background</h2>
+    <ol class="timeline">
+      <li><span>2017</span><div><strong>RowdMap, Inc.</strong> Co-founder &amp; CTO. Acquired by Cotiviti.</div></li>
+      <li><span>2011</span><div><strong>Eliza.</strong> Deal team for the majority-stake investment by Parthenon Capital.</div></li>
+      <li><span>2009</span><div><strong>Sprigley.</strong> Co-founder &amp; CTO. Acquired by Eliza.</div></li>
+    </ol>
+    <p class="creds">
+      EY Entrepreneur of the Year · MBA, University of Southern Maine · BE Chemical Engineering,
+      Bogazici University
     </p>
+  </section>
 
-    {featured.map((project, i) => <FeatureRow project={project} reverse={i % 2 === 0} />)}
-  </div>
+  <section id="contact" class="contact">
+    <div class="wrap section contact-inner">
+      <div>
+        <h2>Contact</h2>
+        <p>Founders, co-investors and companies looking for technology advice: I'd like to hear from you.</p>
+        <p class="social">
+          <a href={site.social.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+          <a href={site.social.twitter} target="_blank" rel="noopener">Twitter</a>
+        </p>
+      </div>
+      <form action={action} method="POST">
+        <label>Name <input type="text" name="name" required autocomplete="name" /></label>
+        <label>Email <input type="email" name="email" required autocomplete="email" /></label>
+        <label>Message <textarea name="message" rows="4" required></textarea></label>
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </section>
+
+<script is:inline>
+  const chips = document.querySelectorAll('.chip');
+  const cards = document.querySelectorAll('.card');
+  chips.forEach((chip) =>
+    chip.addEventListener('click', () => {
+      chips.forEach((c) => c.classList.toggle('active', c === chip));
+      const f = chip.dataset.filter;
+      cards.forEach((card) => {
+        card.hidden = f !== 'all' && !card.dataset.tags.split(' ').includes(f);
+      });
+    }),
+  );
+</script>
 </Base>

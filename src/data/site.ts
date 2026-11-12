@@ -1,9 +1,9 @@
 export const site = {
   name: 'Sager Solutions',
-  tagline: 'Consultancy, Advisory & Investments',
+  owner: 'Burak Sezen',
   url: 'https://sagersolutions.com',
   description:
-    'Sager Solutions is focused on technological solutions that use a creative, yet straightforward approach to provide fresh perspectives for essential industries.',
+    'Burak Sezen is a two-time founder, technologist and investor. Through Sager Solutions he invests in early-stage startups, co-runs a venture fund, and advises companies on technology.',
   // Formspree endpoint for the contact form. Create a form at https://formspree.io,
   // then paste its ID here (the part after /f/ in the endpoint URL).
   formspreeId: 'YOUR_FORM_ID',
@@ -11,13 +11,9 @@ export const site = {
     twitter: 'https://twitter.com/burakszn',
     linkedin: 'https://www.linkedin.com/in/burak-sezen-1b28763/',
   },
+  nav: [
+    { label: 'What I do', href: '/#work' },
+    { label: 'Portfolio', href: '/#portfolio' },
+    { label: 'Background', href: '/#background' },
+  ],
 };
-
-export const nav = [
-  { label: 'Angel Investments', href: '/investments' },
-  { label: 'Local Maine Initiatives', href: '/local-maine-initiatives' },
-  { label: 'Web3/Crypto', href: '/web3-crypto-initiatives' },
-  { label: 'Consultancy', href: '/consultancy' },
-  { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contact' },
-];

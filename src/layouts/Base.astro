@@ -1,8 +1,6 @@
 ---
 import '../styles/global.css';
-import { site, nav } from '../data/site';
-import Nav from '../components/Nav.astro';
-import SocialIcons from '../components/SocialIcons.astro';
+import { site } from '../data/site';
 
 interface Props {
   title?: string;
@@ -10,7 +8,7 @@ interface Props {
 }
 
 const { title, description = site.description } = Astro.props;
-const pageTitle = title ? `${site.name} | ${title}` : `${site.name} | ${site.tagline}`;
+const pageTitle = title ? `${title} | ${site.name}` : `${site.owner} | ${site.name}`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -32,30 +30,18 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
-    <div class="nav-mobile">
-      <input type="checkbox" id="menu" class="button-menu" aria-label="Toggle menu" />
-      <label for="menu" class="menu-bar"><div></div></label>
-      <div class="menu-mobile">
-        <Nav id="menu-mobile" />
-      </div>
-    </div>
-
-    <header id="wrap-header">
-      <div class="social-row desktop">
-        <SocialIcons />
-      </div>
-      <div id="header">
-        <a id="logo" href="/" aria-label={site.name}>
-          <img src="/images/logo.png" alt={site.name} width="542" height="168" />
-        </a>
-        <div class="desktop">
-          <Nav id="menu-header" />
-        </div>
+    <header class="top">
+      <div class="wrap top-inner">
+        <a href="/" class="brand"><img src="/images/logo.png" alt={site.name} /></a>
+        <nav>
+          {site.nav.map((item) => <a href={item.href}>{item.label}</a>)}
+          <a href="/#contact" class="nav-cta">Contact</a>
+        </nav>
       </div>
     </header>
 
@@ -63,20 +49,6 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
       <slot />
     </main>
 
-    <footer id="footer">
-      <div class="w-page">
-        <div class="center-text">
-          <Nav id="menu-footer" />
-        </div>
-        <div class="small-text">
-          <div class="center-text pt-2 pb-1">
-            <SocialIcons />
-          </div>
-          <div class="center-text pt-2 pb-2">
-            &copy;{new Date().getFullYear()} {site.name}. All rights reserved.
-          </div>
-        </div>
-      </div>
-    </footer>
+    <footer class="wrap foot">© {new Date().getFullYear()} {site.name}</footer>
   </body>
 </html>
