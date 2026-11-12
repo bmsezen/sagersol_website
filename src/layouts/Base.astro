@@ -32,7 +32,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -69,10 +69,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
           <Nav id="menu-footer" />
         </div>
         <div class="small-text">
-          <div class="center-text pt-2 pb-2">
-            <img class="logo" src="/images/logo.png" alt={site.name} width="542" height="168" />
-          </div>
-          <div class="center-text pb-1">
+          <div class="center-text pt-2 pb-1">
             <SocialIcons />
           </div>
           <div class="center-text pt-2 pb-2">
