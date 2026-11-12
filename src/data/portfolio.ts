@@ -16,14 +16,6 @@ export const featured: Project[] = [
       'The 6ixth Event is a financial services firm that specializes in the fields of venture capital and private equity.',
     location: 'Portland, ME',
   },
-  {
-    name: 'Farmhand Automation',
-    url: 'http://farmhandautomation.com/',
-    logo: '/images/farmhand-automation.webp',
-    description:
-      'Farmhand Automation empowers sustainable farms with cutting edge robotics automation to make sustainably grown food the norm, not the exception.',
-    location: 'Biddeford, ME',
-  },
 ];
 
 /** Angel Investments page. */
@@ -43,13 +35,6 @@ export const investments: Project[] = [
       'Teamble makes 360 feedback simple, continuous, and actionable. Featured as the #1 HR, Productivity & Work From Home App in Microsoft Teams and Slack App Stores. Trusted by 1500+ organizations on Slack and Teams. Start for free today.',
   },
   {
-    name: 'Vidatronic',
-    url: 'http://www.vidatronic.com/',
-    logo: '/images/logos/vidatronic.png',
-    description:
-      "Vidatronic specializes in enhancing the efficiency and performance of the world's electronic devices by licensing analog intellectual property (IP) cores for integration into systems on a chip (SoCs), including integrated power management unit (PMU) solutions, analog circuitry, security IP, and other technology development projects.",
-  },
-  {
     name: 'Gravie',
     url: 'https://www.gravie.com/',
     logo: '/images/logos/gravie.webp',
@@ -57,11 +42,28 @@ export const investments: Project[] = [
       'We partner with brokers across the nation to improve the way people purchase and access healthcare.',
   },
   {
-    name: 'Yes VC',
-    url: 'https://yes.vc/',
-    logo: '/images/logos/yes-vc.png',
+    name: 'GelTech Labs',
+    url: 'https://geltechlabs.com/',
+    logo: '/images/logos/geltech-labs.png',
     description:
-      'Hello! We are Yes VC, comprised of Caterina Fake, Jyri Engeström, Julie Liao and David Pickerell. We fund great companies at the Pre-Seed and Seed stages.',
+      'GelTech Labs runs an automated lab for soft biomaterials R&D, using robotics and AI to get formulations into animal and clinical studies faster and cheaper.',
+  },
+];
+
+/** Web3/Crypto page. */
+export const crypto: Project[] = [
+  {
+    name: 'Citrea',
+    url: 'https://citrea.xyz/',
+    logo: '/images/logos/citrea.svg',
+    description: "Citrea is Bitcoin's first ZK rollup.",
+  },
+  {
+    name: 'Fairmint',
+    url: 'https://www.fairmint.com/',
+    logo: '/images/logos/fairmint.svg',
+    description:
+      'Fairmint brings equity onchain, tokenizing company shares and maintaining the official onchain ownership record as a transfer agent.',
   },
 ];
 
@@ -73,39 +75,29 @@ export const maineInitiatives: Project[] = [
     logo: '/images/logos/kinotek.png',
   },
   {
-    name: 'Farmhand Automation – Investor and Advisor',
-    url: 'http://farmhandautomation.com/',
-    logo: '/images/logos/farmhand-automation.webp',
-    location: 'Biddeford, ME',
-  },
-  {
     name: 'bluShift Aerospace – Investor and Advisor',
     url: 'https://www.blushiftaerospace.com/',
     logo: '/images/logos/blushift.png',
   },
   {
-    name: 'Reconnect – Investor',
-    url: 'https://reconnect.io/',
-    logo: '/images/logos/reconnect.svg',
+    name: 'Bluesonde – Investor',
+    url: 'https://www.bluesonde.com/',
+    logo: '/images/logos/bluesonde.svg',
+    description:
+      'Bluesonde builds compact, low-maintenance real-time water monitoring systems that stream data for water management, research, and climate adaptation.',
   },
   {
-    name: 'Running Tide – Investor',
-    url: 'https://www.runningtide.com/',
-    logo: '/images/logos/running-tide.png',
+    name: 'Parity Healthcare Analytics – Investor',
+    url: 'https://paritypro.com/',
+    logo: '/images/logos/paritypro.png',
+    description:
+      'Parity is a nurse-founded workforce performance partner that turns hospital staffing data into real-time intelligence and practical recommendations.',
   },
   {
-    name: 'The Maine Center for Entrepreneurs (MCE) – Board Member',
-    url: 'https://www.mced.biz',
-    logo: '/images/logos/mce.png',
-  },
-  {
-    name: 'The Indus Fund – Managing Partner',
-    url: 'https://www.theindusfund.com/',
-    logo: '/images/logos/indus-fund.png',
-  },
-  {
-    name: 'Gorham Savings Bank – Corporator',
-    url: 'https://www.gorhamsavings.bank/',
-    logo: '/images/logos/gorham-savings-bank.png',
+    name: 'Restoration Medicine – Investor',
+    url: 'https://www.restorationmedicine.com/',
+    logo: '/images/logos/restoration-medicine.png',
+    description:
+      'Restoration Medicine delivers precision diagnosis and team-based care for pelvic health conditions via telehealth.',
   },
 ];
