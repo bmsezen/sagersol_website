@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import ProjectRow from '../components/ProjectRow.astro';
+import { maineInitiatives } from '../data/portfolio';
+---
+
+<Base title="Local Maine Initiatives" description="Helping Maine entrepreneurs and business owners growing and diversifying the local economy.">
+  <div class="w-page page-content">
+    <h1 class="pagetitle">Local Maine Initiatives</h1>
+    <h2>Helping Maine entrepreneurs and business owners growing and diversifying the local economy</h2>
+    <div class="projects">
+      {maineInitiatives.map((project) => <ProjectRow project={project} />)}
+    </div>
+  </div>
+</Base>

@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import FeatureRow from '../components/FeatureRow.astro';
+import { site } from '../data/site';
+import { featured } from '../data/portfolio';
+---
+
+<Base>
+  <div class="band">
+    <h2><strong>{site.description}</strong></h2>
+  </div>
+
+  <div class="w-page features">
+    <p>
+      We have active investments in startups working in technology, based on, and developed
+      through, wise, creative, and plain solutions. We are currently investing across multiple
+      markets and are interested in companies using lean startup methods and bootstrapping to
+      create value.
+    </p>
+
+    {featured.map((project, i) => <FeatureRow project={project} reverse={i % 2 === 0} />)}
+  </div>
+</Base>

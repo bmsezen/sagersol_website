@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+
+const action = `https://formspree.io/f/${site.formspreeId}`;
+---
+
+<Base title="Contact" description="Get in touch with Sager Solutions.">
+  <div class="w-page page-content">
+    <h1 class="pagetitle">Contact</h1>
+    <div class="contact-wrap">
+      <form action={action} method="POST">
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required autocomplete="name" />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required autocomplete="email" />
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <!-- Honeypot: Formspree ignores submissions where this is filled in. -->
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</Base>

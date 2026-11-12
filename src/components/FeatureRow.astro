@@ -1,0 +1,23 @@
+---
+import type { Project } from '../data/portfolio';
+
+interface Props {
+  project: Project;
+  reverse?: boolean;
+}
+const { project, reverse = false } = Astro.props;
+---
+
+<ul class:list={['feature', { reverse }]}>
+  <li>
+    <img src={project.logo} alt={project.name} loading="lazy" />
+  </li>
+  <li>
+    <div class="feature-body">
+      <h3>{project.name}</h3>
+      <div><p>{project.description}</p></div>
+      {project.location && <div class="small-text">{project.location}</div>}
+      <a class="button" href={project.url} target="_blank" rel="noopener">learn more</a>
+    </div>
+  </li>
+</ul>

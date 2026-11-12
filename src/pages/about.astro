@@ -1,0 +1,34 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+---
+
+<Base title="About" description="2X Founder/Entrepreneur, Technologist, Investor.">
+  <div class="w-page page-content">
+    <h1 class="pagetitle">About</h1>
+    <div class="about-columns">
+      <div>
+        <p>2X Founder/Entrepreneur, Technologist, Investor</p>
+        <p>Co-founder &amp; CTO @ Sprigley [Acquired by Eliza, 2009]</p>
+        <p>Deal team @ Eliza [majority stake investment by Parthenon Capital, 2011]</p>
+        <p>Co-founder &amp; CTO @ RowdMap, Inc. [Acquired by Cotiviti (COTV), 2017]</p>
+        <p>EY Entrepreneur of the Year</p>
+        <p>MBA from University of Southern Maine</p>
+        <p>BE in Chemical Engineering from Bogazici University</p>
+        <p><a href={site.social.linkedin} target="_blank" rel="noopener">LinkedIn</a></p>
+        <p>Telegram: @bkmszn</p>
+        <p>Discord: Burak S#7240</p>
+      </div>
+      <div>
+        <a
+          class="twitter-timeline"
+          data-width="500"
+          data-height="750"
+          data-dnt="true"
+          href="https://twitter.com/burakszn?ref_src=twsrc%5Etfw">Tweets by burakszn</a>
+        <script is:inline async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+    </div>
+    <div class="spacer" aria-hidden="true"></div>
+  </div>
+</Base>

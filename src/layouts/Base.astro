@@ -1,0 +1,85 @@
+---
+import '../styles/global.css';
+import { site, nav } from '../data/site';
+import Nav from '../components/Nav.astro';
+import SocialIcons from '../components/SocialIcons.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description = site.description } = Astro.props;
+const pageTitle = title ? `${site.name} | ${title}` : `${site.name} | ${site.tagline}`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content="website" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="nav-mobile">
+      <input type="checkbox" id="menu" class="button-menu" aria-label="Toggle menu" />
+      <label for="menu" class="menu-bar"><div></div></label>
+      <div class="menu-mobile">
+        <Nav id="menu-mobile" />
+      </div>
+    </div>
+
+    <header id="wrap-header">
+      <div class="social-row desktop">
+        <SocialIcons />
+      </div>
+      <div id="header">
+        <a id="logo" href="/" aria-label={site.name}>
+          <img src="/images/logo.png" alt={site.name} width="542" height="168" />
+        </a>
+        <div class="desktop">
+          <Nav id="menu-header" />
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer id="footer">
+      <div class="w-page">
+        <div class="center-text">
+          <Nav id="menu-footer" />
+        </div>
+        <div class="small-text">
+          <div class="center-text pt-2 pb-2">
+            <img class="logo" src="/images/logo.png" alt={site.name} width="542" height="168" />
+          </div>
+          <div class="center-text pb-1">
+            <SocialIcons />
+          </div>
+          <div class="center-text pt-2 pb-2">
+            &copy;{new Date().getFullYear()} {site.name}. All rights reserved.
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
